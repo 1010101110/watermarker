@@ -3,10 +3,18 @@ var path = require('path');
 var jimp = require('jimp');
 var ffmpeg = require('ffmpeg');
 
+//npm install jimp
+//npm install ffmpeg
+//install ffmpeg.exe binary from its website
+//place image/video files directly into this folder
+//in command line run: node index.js
 
 async function doit(){
+    //read directory
     var files = fs.readdirSync(__dirname,{withFileTypes:true})
+    //open watermark
     var logoobj = await jimp.read('resource/logo.png')
+    //loop through files in directory
     for (let i = 0; i < files.length; i++) {
         const f = files[i];
         if(f.isFile()){
